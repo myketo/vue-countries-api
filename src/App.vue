@@ -1,16 +1,20 @@
 <template>
 	<div class="app-container">
 		<app-header></app-header>
+
+		<home-page></home-page>
 	</div>
 </template>
 
 <script>
 import AppHeader from './components/AppHeader.vue'
+import HomePage from './components/home/HomePage.vue'
 
 export default {
 	name: 'App',
 	components: {
 		AppHeader,
+		HomePage,
 	}
 }
 </script>
@@ -24,6 +28,9 @@ export default {
 
 	--lm-text: hsl(200, 15%, 8%);
 	--white: hsl(0, 0%, 100%);
+	--dark-grey: hsl(0, 0%, 52%);
+
+	--box-shadow: 0px 0px 15px 2px rgb(66 68 90 / 10%);
 }
 
 *, * > * {
