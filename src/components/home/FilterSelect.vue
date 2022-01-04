@@ -47,7 +47,7 @@ export default {
 
 <style>
 	.filter-container {
-		width: 15%;
+		width: 16%;
 		position: relative;
 	}
 

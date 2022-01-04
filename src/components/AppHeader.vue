@@ -19,19 +19,20 @@ export default {
 	#app-header {
 		display: flex;
 		justify-content: space-between;
-		padding: 25px 65px;
+		padding: 25px 80px;
 		box-shadow: var(--box-shadow);
 		background: var(--white);
 	}
 
 	#app-header h1 {
 		font-weight: 800;
-		font-size: var(--bigger-font);
+		font-size: 20px;
 	}
 
 	#app-header .toggle-theme {
 		font-weight: 600;
 		display: flex;
+		align-items: center;
 		gap: 8px;
 	}
 

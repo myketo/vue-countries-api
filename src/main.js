@@ -1,4 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+
+app.config.globalProperties.$restCountriesUrl = 'https://restcountries.com/v3.1'
+
+app.mount('#app')
