@@ -1,15 +1,19 @@
 <template>
 	<div id="home-page">
 		<nav>
-			<search-input></search-input>
+			<search-input v-model="searchValue"></search-input>
 			<filter-select></filter-select>
 		</nav>
-		<div class="countries">
+		<transition-group name="countries" tag="div" class="countries">
 			<country-item 
-				v-for="country in countries" 
+				v-for="country in filteredCountries" 
 				:key="country.name.common"
 				:country="country"></country-item>
-		</div>
+		</transition-group>
+
+		<transition name="no-countries">
+			<p v-show="!filteredCountries.length">No countries found.</p>
+		</transition>
 	</div>
 </template>
 
@@ -30,6 +34,15 @@ export default {
 	data() {
 		return {
 			countries: [],
+			searchValue: '',
+		}
+	},
+
+	computed: {
+		filteredCountries() {
+			return this.countries.filter((country) => {
+				return country.name.common.toLowerCase().match(this.searchValue.toLowerCase())
+			})
 		}
 	},
 
@@ -38,7 +51,7 @@ export default {
 			.then(res => res.json())
 			.then(data => this.countries = data)
 			.catch(err => console.log(err.message))
-	}
+	},
 }
 </script>
 
@@ -58,5 +71,26 @@ export default {
 		grid-gap: 80px;
 		grid-auto-rows: minmax(50px, auto);
 		margin-top: 45px;
+	}
+
+	.countries-enter-active,
+	.countries-leave-active {
+	transition: all .45s ease;
+	}
+
+	.countries-enter-from,
+	.countries-leave-to {
+		opacity: 0;
+		transform: translateY(35px);
+	}
+
+	.no-countries-enter-active {
+		transition: opacity .45s ease;
+		transition-delay: 0.45s;
+	}
+
+	.no-countries-enter-from,
+	.no-countries-leave-to {
+		opacity: 0;
 	}
 </style>

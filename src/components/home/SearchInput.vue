@@ -6,6 +6,8 @@
 			type="text" 
 			id="search-input"
 			placeholder="Search for a country..."
+			:value="modelValue"
+			@input="$emit('update:modelValue', $event.target.value)"
 		>
 	</label>
 </template>
@@ -13,6 +15,14 @@
 <script>
 export default {
 	name: 'SearchInput',
+
+	props: {
+		modelValue: String,
+	},
+
+	emits: [
+		'update:modelValue',
+	],
 }
 </script>
 
