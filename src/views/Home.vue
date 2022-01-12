@@ -7,7 +7,7 @@
 		<transition-group name="countries" tag="div" class="countries">
 			<country-item 
 				v-for="country in filteredCountries" 
-				:key="country.name.common"
+				:key="country.cca3"
 				:country="country"></country-item>
 		</transition-group>
 
@@ -18,12 +18,12 @@
 </template>
 
 <script>
-import SearchInput from './SearchInput.vue'
-import FilterSelect from './FilterSelect.vue'
-import CountryItem from './CountryItem.vue'
+import SearchInput from '../components/home/SearchInput.vue'
+import FilterSelect from '../components/home/FilterSelect.vue'
+import CountryItem from '../components/home/CountryItem.vue'
 
 export default {
-	name: 'HomePage',
+	name: 'Home',
 
 	components: {
 		SearchInput,

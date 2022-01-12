@@ -1,6 +1,8 @@
 <template>
 	<header id="app-header">
-		<h1>Where in the world?</h1>
+		<router-link :to="{ name: 'Home' }">
+			<h1>Where in the world?</h1>
+		</router-link>
 
 		<div class="toggle-theme">
 			<img src="../assets/moon-regular.svg">
@@ -24,7 +26,12 @@ export default {
 		background: var(--white);
 	}
 
-	#app-header h1 {
+	#app-header a {
+		color: var(--lm-text);
+		text-decoration: none;
+	}
+
+	#app-header a h1 {
 		font-weight: 800;
 		font-size: 20px;
 	}

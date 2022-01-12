@@ -1,5 +1,5 @@
 <template>
-	<div class="country-card">
+	<router-link class="country-card" :to="{ name: 'Details', params: { cca3: country.cca3 } }">
 		<img :src="country.flags.png" class="country-flag">
 		<div class="country-details">
 			<h2 class="country-name">{{ country.name.common }}</h2>
@@ -13,7 +13,7 @@
 				<template v-if="!country.capital">None</template>
 			</p>
 		</div>
-	</div>
+	</router-link>
 </template>
 
 <script>
@@ -36,6 +36,8 @@ export default {
 		border-radius: 6px;
 		cursor: pointer;
 		transition: transform 0.25s;
+		text-decoration: none;
+		color: var(--lm-text);
 	}
 
 	.country-card:hover {
