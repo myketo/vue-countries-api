@@ -1,6 +1,6 @@
 <template>
-	<div class="filter-container">
-		<div class="active-filter" @click="toggleList">
+	<div class="filter-container" v-click-away="() => {this.listVisible = false}">
+		<div class="active-filter" @click="this.listVisible = !this.listVisible">
 			<span>{{ active ? active : 'Filter by Region' }}</span>
 			<div>
 				<i class="arrow" :class="listVisible ? 'up' : 'down'"></i>
@@ -12,6 +12,7 @@
 				v-for="(region, index) in regions" 
 				:key="index"
 				class="region"
+				@click="selectRegion(region)"
 			>
 				{{ region }}
 			</div>
@@ -23,24 +24,28 @@
 export default {
 	name: 'FilterSelect',
 
+	props: {
+		regions: Array,
+	},
+
+	emits: [
+		'selectedRegion',
+	],
+
 	data() {
 		return {
 			active: '',
-			regions: [
-				'Africa',
-				'America',
-				'Asia',
-				'Europe',
-				'Oceania'
-			],
 			listVisible: false,
 		}
 	},
 
 	methods: {
-		toggleList() {
-			this.listVisible = !this.listVisible
-		}
+		selectRegion(region) {
+			this.active = region
+			this.listVisible = false
+
+			this.$emit('selectedRegion', region)
+		},
 	}
 }
 </script>
@@ -49,6 +54,8 @@ export default {
 	.filter-container {
 		width: 16%;
 		position: relative;
+		cursor: pointer;
+		user-select: none;
 	}
 
 	.filter-container .active-filter {
@@ -70,12 +77,18 @@ export default {
 		font-weight: 600;
 		padding: 12px 0;
 		background-color: var(--white);
+		z-index: 2;
 	}
 
 	.filter-container .region-list .region {
 		background-color: var(--white);
 		padding: 8px 22px;
 		border-radius: 6px;
+		transition: ease 0.25s;
+	}
+
+	.filter-container .region-list .region:hover {
+		background-color: hsl(0, 0%, 90%);
 	}
 
 	.arrow {

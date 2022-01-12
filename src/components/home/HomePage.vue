@@ -2,7 +2,7 @@
 	<div id="home-page">
 		<nav>
 			<search-input v-model="searchValue"></search-input>
-			<filter-select></filter-select>
+			<filter-select :regions="regions" @selectedRegion="setRegionFilter"></filter-select>
 		</nav>
 		<transition-group name="countries" tag="div" class="countries">
 			<country-item 
@@ -35,14 +35,33 @@ export default {
 		return {
 			countries: [],
 			searchValue: '',
+			regionFilter: '',
 		}
 	},
 
 	computed: {
 		filteredCountries() {
-			return this.countries.filter((country) => {
+			var filtered = this.countries.filter((country) => {
 				return country.name.common.toLowerCase().match(this.searchValue.toLowerCase())
 			})
+
+			if (this.regionFilter != '') {
+				filtered = filtered.filter((country) => {
+					return country.region.toLowerCase().match(this.regionFilter.toLowerCase())
+				})
+			}
+
+			return filtered
+		},
+
+		regions() {
+			return [...new Set(this.countries.map(country => country.region))]
+		}
+	},
+
+	methods: {
+		setRegionFilter(region) {
+			this.regionFilter = region
 		}
 	},
 
