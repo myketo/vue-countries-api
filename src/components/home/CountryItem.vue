@@ -1,5 +1,5 @@
 <template>
-	<router-link class="country-card" :to="{ name: 'Details', params: { cca3: country.cca3 } }">
+	<router-link class="country-card" :to="{ name: 'Details', params: { cca2: country.cca2.toLowerCase() } }">
 		<img :src="country.flags.png" class="country-flag">
 		<div class="country-details">
 			<h2 class="country-name">{{ country.name.common }}</h2>

@@ -7,7 +7,7 @@
 		<transition-group name="countries" tag="div" class="countries">
 			<country-item 
 				v-for="country in filteredCountries" 
-				:key="country.cca3"
+				:key="country.cca2"
 				:country="country"></country-item>
 		</transition-group>
 
@@ -25,6 +25,10 @@ import CountryItem from '../components/home/CountryItem.vue'
 export default {
 	name: 'Home',
 
+	props: [
+		'countries',
+	],
+
 	components: {
 		SearchInput,
 		FilterSelect,
@@ -33,7 +37,6 @@ export default {
 
 	data() {
 		return {
-			countries: [],
 			searchValue: '',
 			regionFilter: '',
 		}
@@ -63,13 +66,6 @@ export default {
 		setRegionFilter(region) {
 			this.regionFilter = region
 		}
-	},
-
-	mounted() {
-		fetch(this.$restCountriesUrl + '/all')
-			.then(res => res.json())
-			.then(data => this.countries = data)
-			.catch(err => console.log(err.message))
 	},
 }
 </script>

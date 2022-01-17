@@ -1,9 +1,11 @@
 <template>
-	<div class="app-container">
+	<div class="app-container" v-if="this.countries.length">
 		<app-header></app-header>
-
-		<router-view/>
+		
+		<router-view :countries="countries"/>
 	</div>
+
+	<p v-else>Loading...</p>
 </template>
 
 <script>
@@ -11,9 +13,23 @@ import AppHeader from './components/AppHeader.vue'
 
 export default {
 	name: 'App',
+	
 	components: {
 		AppHeader,
-	}
+	},
+
+	data() {
+		return {
+			countries: [],
+		}
+	},
+
+	mounted() {
+		fetch(this.$restCountriesUrl + '/all')
+			.then(res => res.json())
+			.then(data => this.countries = data)
+			.catch(err => console.log(err.message))
+	},
 }
 </script>
 
@@ -39,8 +55,11 @@ export default {
 	color: var(--lm-text);
 	background: hsl(0, 0%, 98%);
 	min-height: 100vh;
-	width: 100vw;
 	font-size: var(--normal-font);
 	font-weight: 300;
+}
+
+b {
+	font-weight: 600;
 }
 </style>
