@@ -128,4 +128,16 @@ export default {
 	.app-container.dark .region-list .region:hover {
 		background-color: hsl(209, 23%, 26%);
 	}
+
+	@media (max-width: 767px) {
+		.filter-container {
+			width: 55%;
+			font-size: 13px;
+		}
+
+		.arrow {
+			padding: 3px;
+			border-width: 0 2px 2px 0;
+		}
+	}
 </style>

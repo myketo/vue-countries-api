@@ -73,6 +73,16 @@ b {
 	font-weight: 600;
 }
 
+.mobile-break {
+	display: none;
+}
+
+@media (max-width: 767px) {
+	.mobile-br {
+		display: block;
+	}
+}
+
 .app-container.dark {
 	background: var(--very-dark-blue);
 	color: var(--white);

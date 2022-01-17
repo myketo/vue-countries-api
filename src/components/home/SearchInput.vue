@@ -73,4 +73,14 @@ export default {
 	.app-container.dark .search-input-container .search-icon {
 		filter: brightness(2);
 	}
+
+	@media (max-width: 767px) {
+		.search-input-container {
+			width: 100%;
+		}
+
+		.search-input-container #search-input {
+			font-size: 13px;
+		}
+	}
 </style>

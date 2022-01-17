@@ -71,4 +71,14 @@ export default {
 	.app-container.dark #app-header .toggle-theme img {
 		filter: invert(1);
 	}
+
+	@media (max-width: 767px) {
+		#app-header {
+			padding: 35px 17px;
+		}
+
+		#app-header a h1 {
+			font-size: 15px;
+		}
+	}
 </style>

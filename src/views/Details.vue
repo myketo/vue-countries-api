@@ -72,6 +72,7 @@
 
 				<div class="border-countries">
 					<b>Border Countries: </b>
+					<br class="mobile-br">
 					
 					<router-link 
 						:to="{ name: 'Details', params: { cca2: border.cca2 } }"
@@ -232,6 +233,7 @@ export default {
 		display: flex;
 		gap: 150px;
 		margin-top: 20px;
+		line-height: 20px;
 	}
 
 	#details-page .country-info .details .details-table ul {
@@ -259,5 +261,58 @@ export default {
 
 	#details-page .country-info .details .border-countries .border-name:first-of-type {
 		margin-left: 15px;
+	}
+
+	@media (max-width: 767px) {
+		#details-page {
+			padding: 45px 30px;
+		}
+
+		#details-page .go-back {
+			width: 35%;
+			padding: 10px 0;
+			margin-bottom: 60px;
+		}
+
+		#details-page .country-info {
+			margin-top: 0;
+			flex-direction: column;
+		}
+
+		#details-page .country-info .flag img {
+			width: 100%;
+			max-height: 225px;
+		}
+
+		#details-page .country-info .details {
+			padding: 0;
+		}
+
+		#details-page .country-info .details h1 {
+			font-size: 22px;
+			margin-top: 50px;
+		}
+
+		#details-page .country-info .details .details-table {
+			flex-direction: column;
+			gap: 25px;
+		}
+
+		#details-page .country-info .details .border-countries {
+			margin-top: 30px;
+		}
+
+		#details-page .country-info .details .border-countries b {
+			font-size: 18px;
+			display: block;
+		}
+
+		#details-page .country-info .details .border-countries .border-name {
+			font-size: 14px;
+		}
+
+		#details-page .country-info .details .border-countries .border-name:first-of-type {
+			margin-left: 0;
+		}
 	}
 </style>

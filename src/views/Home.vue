@@ -4,6 +4,7 @@
 			<search-input v-model="searchValue"></search-input>
 			<filter-select :regions="regions" @selectedRegion="setRegionFilter"></filter-select>
 		</nav>
+
 		<transition-group name="countries" tag="div" class="countries">
 			<country-item 
 				v-for="country in filteredCountries" 
@@ -107,5 +108,22 @@ export default {
 	.no-countries-enter-from,
 	.no-countries-leave-to {
 		opacity: 0;
+	}
+
+	@media (max-width: 767px) {
+		#home-page {
+			padding: 30px 17px;
+		}
+
+		#home-page nav {
+			flex-direction: column;
+			gap: 40px;
+		}
+
+		#home-page .countries {
+			grid-template-columns: 1fr;
+			padding: 0 40px;
+			grid-gap: 40px;
+		}
 	}
 </style>
