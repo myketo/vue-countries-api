@@ -4,9 +4,9 @@
 			<h1>Where in the world?</h1>
 		</router-link>
 
-		<div class="toggle-theme">
+		<div class="toggle-theme" @click="$emit('toggleTheme')">
 			<img src="../assets/moon-regular.svg">
-			<span>Dark Mode</span>
+			<span>{{ themeText }} Mode</span>
 		</div>
 	</header>
 </template>
@@ -14,6 +14,16 @@
 <script>
 export default {
 	name: 'AppHeader',
+
+	props: {
+		theme: String,
+	}, 
+
+	computed: {
+		themeText() {
+			return this.theme === 'light' ? 'Dark' : 'Light'
+		}
+	}
 }
 </script>
 
@@ -41,11 +51,24 @@ export default {
 		display: flex;
 		align-items: center;
 		gap: 8px;
+		cursor: pointer;
 	}
 
 	#app-header .toggle-theme img {
 		height: var(--normal-font);
 		transform: rotate(-15deg);
 		margin-top: -1px;
+	}
+
+	.app-container.dark #app-header {
+		background: var(--dark-blue);
+	}
+
+	.app-container.dark #app-header a {
+		color: var(--white);
+	}
+
+	.app-container.dark #app-header .toggle-theme img {
+		filter: invert(1);
 	}
 </style>

@@ -106,4 +106,26 @@ export default {
 	.arrow.up {
 		transform: rotate(-135deg)
 	}
+
+	.app-container.dark .filter-container .active-filter {
+		background-color: var(--dark-blue);
+	}
+
+	.app-container.dark .arrow {
+		border: solid var(--white);
+		border-width: 0 3px 3px 0;
+		border-radius: 2px;
+	}
+
+	.app-container.dark .region-list {
+		background-color: var(--dark-blue);
+	}
+
+	.app-container.dark .region-list .region {
+		background-color: var(--dark-blue);
+	}
+
+	.app-container.dark .region-list .region:hover {
+		background-color: hsl(209, 23%, 26%);
+	}
 </style>

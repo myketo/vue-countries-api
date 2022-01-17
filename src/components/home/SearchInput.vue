@@ -28,7 +28,7 @@ export default {
 
 <style scoped>
 	.search-input-container {
-		background-color: var(--white);
+		background: var(--white);
 		padding: 10px 35px;
 		display: flex;
 		align-items: center;
@@ -43,7 +43,7 @@ export default {
 
 	.search-input-container #search-input {
 		border: none;
-		background-color: var(--white);
+		background: var(--white);
 		padding: 10px 20px;
 		font-size: var(--normal-font);
 		width: 100%;
@@ -55,5 +55,22 @@ export default {
 
 	.search-input-container #search-input:focus {
 		outline-width: 0;
+	}
+
+	.app-container.dark .search-input-container {
+		background: var(--dark-blue);
+	}
+
+	.app-container.dark .search-input-container #search-input {
+		background: var(--dark-blue);
+		color: var(--white);
+	}
+
+	.app-container.dark .search-input-container #search-input::placeholder {
+		color: var(--white);
+	}
+
+	.app-container.dark .search-input-container .search-icon {
+		filter: brightness(2);
 	}
 </style>

@@ -29,4 +29,8 @@
 		margin-top: 30px;
 		color: blue;
 	}
+
+	.app-container.dark #page-not-found {
+		background-color: var(--very-dark-blue);
+	}
 </style>

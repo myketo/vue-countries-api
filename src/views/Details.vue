@@ -186,6 +186,20 @@ export default {
 		text-decoration: none;
 	}
 
+	.app-container.dark #details-page .go-back {
+		color: var(--white);
+		background-color: var(--dark-blue);
+	}
+
+	.app-container.dark #details-page .go-back:before {
+		filter: invert(1);
+	}
+
+	.app-container.dark #details-page .country-info .details .border-countries .border-name {
+		color: var(--white);
+		background-color: var(--dark-blue);
+	}
+
 	#details-page .go-back:before {
 		content: url('../assets/arrow-left.svg');
 		display: inline-block;
@@ -234,12 +248,13 @@ export default {
 
 	#details-page .country-info .details .border-countries .border-name {
 		box-shadow: var(--box-shadow);
-		padding: 5px 30px;
+		padding: 8px 30px;
 		margin-right: 10px;
 		margin-top: 10px;
 		text-decoration: none;
 		color: var(--lm-text);
 		display: inline-block;
+		border-radius: 4px;
 	}
 
 	#details-page .country-info .details .border-countries .border-name:first-of-type {

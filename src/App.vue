@@ -1,6 +1,6 @@
 <template>
-	<div class="app-container" v-if="this.countries.length">
-		<app-header></app-header>
+	<div class="app-container" :class="theme" v-if="this.countries.length">
+		<app-header @toggleTheme="toggleTheme" :theme="theme"></app-header>
 		
 		<router-view :countries="countries"/>
 	</div>
@@ -21,6 +21,7 @@ export default {
 	data() {
 		return {
 			countries: [],
+			theme: 'light',
 		}
 	},
 
@@ -29,6 +30,12 @@ export default {
 			.then(res => res.json())
 			.then(data => this.countries = data)
 			.catch(err => console.log(err.message))
+	},
+
+	methods: {
+		toggleTheme() {
+			this.theme = this.theme === 'light' ? 'dark' : 'light'
+		}
 	},
 }
 </script>
@@ -43,6 +50,9 @@ export default {
 	--lm-text: hsl(200, 15%, 8%);
 	--white: hsl(0, 0%, 100%);
 	--dark-grey: hsl(0, 0%, 52%);
+
+	--dark-blue: hsl(209, 23%, 22%);
+	--very-dark-blue: hsl(207, 26%, 17%);
 
 	--box-shadow: 0px 0px 15px 2px rgb(66 68 90 / 10%);
 }
@@ -61,5 +71,10 @@ export default {
 
 b {
 	font-weight: 600;
+}
+
+.app-container.dark {
+	background: var(--very-dark-blue);
+	color: var(--white);
 }
 </style>

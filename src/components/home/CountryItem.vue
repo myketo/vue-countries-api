@@ -67,4 +67,9 @@ export default {
 	.country-card .country-details p b {
 		font-weight: 600;
 	}
+
+	.app-container.dark .country-card {
+		color: var(--white);
+		background-color: var(--dark-blue);
+	}
 </style>
